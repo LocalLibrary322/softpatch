@@ -2,53 +2,65 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center text-white overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
 
-      {/* STARS */}
-      <div className="absolute inset-0 bg-[radial-gradient(white_1px,transparent_1px)] [background-size:25px_25px] opacity-20"></div>
+      {/* 🌌 STARS (TIDAK BISA NUTUP CLICK) */}
+      <div className="absolute inset-0 pointer-events-none 
+        bg-[radial-gradient(white_1px,transparent_1px)] 
+        [background-size:25px_25px] opacity-20">
+      </div>
 
-      {/* ROTATING LOGO */}
+      {/* 🌍 LEFT PLANET GLOW */}
+      <div className="absolute left-0 top-0 h-full w-[200px] pointer-events-none">
+        <div className="h-full w-full bg-gradient-to-r from-blue-500/40 via-green-400/30 to-transparent blur-2xl"></div>
+      </div>
+
+      {/* 🧍 FLOATING LOGO (3D FEEL) */}
       <motion.img
         src="/logo.png"
-        className="absolute right-10 w-72 opacity-40"
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
+        className="absolute right-20 w-72 opacity-70"
+        animate={{
+          rotateY: 360,
+          y: [0, -20, 0]
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 10,
+          ease: "linear"
+        }}
       />
 
-      {/* TITLE */}
-      <h1 className="text-6xl font-bold text-red-500 drop-shadow-[0_0_30px_red]">
-        SoftPatch
-      </h1>
+      {/* 🔴 MAIN CONTENT */}
+      <div className="z-10 flex flex-col items-start">
 
-      <p className="mt-4 text-gray-300 text-center max-w-xl">
-        Buy Soft Patch, a great serverside for beginners!
-      </p>
+        {/* TITLE */}
+        <h1 className="text-[120px] font-bold text-red-500 leading-none drop-shadow-[0_0_40px_red]">
+          SoftPatch
+        </h1>
 
-      {/* FEATURES */}
-      <div className="mt-6 text-center text-gray-400 space-y-1">
-        <p>Rare Scripts</p>
-        <p>Lua Scripts</p>
-        <p>Good Games</p>
-        <p>Kind of Good Staff</p>
-        <p>TOS Is Fair</p>
-        <p>Compatible With Mobile And PC</p>
+        {/* SUBTEXT */}
+        <p className="mt-2 text-gray-300 text-lg">
+          Buy Soft Patch, a great serverside for beginners!
+        </p>
+
+        {/* BUTTONS */}
+        <div className="flex gap-10 mt-8 text-lg">
+
+          <a href="https://discord.gg/zeyKfgCFFg">
+            <button className="hover:text-red-500 hover:drop-shadow-[0_0_15px_red] transition">
+              Discord
+            </button>
+          </a>
+
+          <a href="/buy">
+            <button className="hover:text-red-500 hover:drop-shadow-[0_0_15px_red] transition">
+              Buy
+            </button>
+          </a>
+
+        </div>
+
       </div>
-
-      {/* BUTTONS */}
-      <div className="flex gap-6 mt-8">
-        <a href="https://discord.gg/zeyKfgCFFg">
-          <button className="px-6 py-2 border border-red-500 rounded-lg hover:bg-red-500 hover:shadow-[0_0_20px_red] transition">
-            Discord
-          </button>
-        </a>
-
-        <a href="/buy">
-          <button className="px-6 py-2 border border-red-500 rounded-lg hover:bg-red-500 hover:shadow-[0_0_20px_red] transition">
-            Buy
-          </button>
-        </a>
-      </div>
-
     </div>
   );
 }
